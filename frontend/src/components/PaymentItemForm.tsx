@@ -506,6 +506,7 @@ export const PaymentItemForm: React.FC<PaymentItemFormProps> = ({
   const [isDragOver, setIsDragOver] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isUploading, setIsUploading] = useState<boolean>(false);
+  const invoiceInputRef = useRef<HTMLInputElement>(null);
 
   // hooks
   const { data: recipients, isLoading: loadingRecipients, refetch: refetchRecipients } = useRecipients();
@@ -1338,11 +1339,7 @@ export const PaymentItemForm: React.FC<PaymentItemFormProps> = ({
             {!isUploading && (
               <>
                 <HiddenFileInput
-                  ref={(input) => {
-                    if (input) {
-                      input.onclick = () => input.click();
-                    }
-                  }}
+                  ref={invoiceInputRef}
                   type="file"
                   accept=".pdf,.docx,.doc,.jpg,.jpeg,.png,.gif,.bmp,.tiff"
                   onChange={handleFileInputChange}
@@ -1351,7 +1348,7 @@ export const PaymentItemForm: React.FC<PaymentItemFormProps> = ({
                 <FileUploadContainer
                   isDragOver={isDragOver}
                   hasFile={!!selectedFile}
-                  onClick={() => (document.querySelector('input[type="file"]') as HTMLInputElement)?.click()}
+                  onClick={() => invoiceInputRef.current?.click()}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
