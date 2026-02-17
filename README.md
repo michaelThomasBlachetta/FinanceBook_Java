@@ -6,8 +6,6 @@ Professional personal finance management application featuring a robust Spring B
 
 FinanceBook is a comprehensive tool for tracking expenses, incomes, and managing financial categories. It supports multi-user environments with strict data isolation, transaction fee calculations, and detailed statistical analysis.
 
-This version is a reimplementation of the original Python-based FinanceBook, leveraging the enterprise capabilities of **Java 17** and **Spring Boot**, paired with a **React** frontend for a responsive user experience.
-
 ## Architecture
 
 ### Backend (`financeJava/backend`)
